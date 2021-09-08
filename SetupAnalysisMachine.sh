@@ -5,7 +5,8 @@
 echo "Installing Miniconda3"
 if ! command -v conda &> /dev/null ; then	
 		wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
-		bash ~/miniconda.sh -b -p $HOME/miniconda		
+		bash ~/miniconda.sh -b -p $HOME/miniconda			
+		echo "Miniconda3 installed successfully - configuring environments."	
 	else
 		echo "Conda installation already found, skipping."	
 fi
@@ -17,6 +18,7 @@ conda deactivate
 
 #Creating and then initialising the conda environment
 #Check to see if the environment exists
+
 if ! conda env list | grep -q 'GroundStation'; then  
 	conda create --name GroundStation -y
 fi
@@ -30,6 +32,7 @@ conda activate GroundStation
 echo "Installing gnuradio"
 if [[ $(conda list gnuradio --json -f) == "[]" ]] ; then
 		conda install -c  conda-forge gnuradio -y
+		echo "gnuradio successfully installed"
 	else
 		echo "gnuradio already installed, skipping"
 fi
@@ -37,6 +40,7 @@ fi
 echo "Installing gr-satellites"
 if [[ $(conda list gnuradio-satellites --json) == "[]" ]] ; then
 		conda install -c  conda-forge gnuradio-satellites -y
+		echo "gr-satellites successfully installed"
 	else
 		echo "gr-satellites already installed, skipping"
 fi
@@ -45,6 +49,7 @@ echo "Installing git"
 if ! command -v git &> /dev/null ; then
 		sudo apt install -y git
 		sudo apt --fix-broken install -y
+		echo "git successfully installed"
 	else
 		echo "git installation already found, skipping."
 fi
@@ -60,6 +65,7 @@ echo "Installing ffmpeg"
 if ! command -v ffmpeg &> /dev/null ; then
 		sudo apt install -y ffmpeg
 		sudo apt --fix-broken install -y
+		echo "ffmpeg successfully installed"
 	else
 		echo "ffmpeg installation already found, skipping."
 fi
