@@ -1,29 +1,27 @@
-## Welcome to GitHub Pages
+# Installation and Operation of gr-satellites
 
-You can use the [editor on GitHub](https://github.com/LSilverwood/UoAGroundstation/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Requirements
+This guide has been tested and confirmed to work on Ubuntu 18.04 LTS and Ubuntu 20.04 LTS.You must be connected to the internet to install the necessary software. You will require superuser permissions to install the software.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## Software Installation
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Recommended Method: Installation Shell Script.
 
-```markdown
-Syntax highlighted code block
+The shell script [SetupAnalysisMachine.sh](https://github.com/LSilverwood/UoAGroundstation/blob/main/SetupAnalysisMachine.sh) will automatically install Miniconda3, gnuradio, gr-satellites, gr-frontends, and all of their dependencies. The script also verifies that gr-satellites is functioning by decoding a recorded .wav file.
 
-# Header 1
-## Header 2
-### Header 3
+If the script fails to complete, you should take not of the stage at which it failed - the script will print "Installing X" and "X Successfuly Installed" as it works through installing the programs one by one. Then, skip down to the 2nd installation method (Manual Installation) and attempt to manually install whichever piece of software responsible for the error.
 
-- Bulleted
-- List
+To use the script, download it from the [main github branch.](https://raw.githubusercontent.com/LSilverwood/UoAGroundstation/main/SetupAnalysisMachine.sh). Locate the the directory where the file is stored(Typically in the downloads folder), right click, and select "Open in terminal".
+Then, enter the following command in the terminal window:
+```bash
+sudo bash ./SetupAnalysisMachine.sh
+```
+and enter your password when prompted. When the script finishes executing, you should see the output "Test passed - gr-satellites is installed and working!". Additionally, you will see an example of a decoded packet in the terminal window. 
 
-1. Numbered
-2. List
+### Manual Method: 
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+The manual method 
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
