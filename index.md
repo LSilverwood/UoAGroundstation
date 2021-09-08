@@ -21,8 +21,12 @@ and enter your password when prompted. When the script finishes executing, you s
 
 ### Manual Method: 
 
-The manual method 
-```
+The manual method of installing the software is covered in great detail in [gr_satellites_guide_Project_93.pdf](https://github.com/LSilverwood/UoAGroundstation/blob/main/gr_satellites_guide_Project_93.pdf). TODO: Transcribe this.
+
+
+## Downloading and preparing real recordings from satNOGS.
+
+
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
