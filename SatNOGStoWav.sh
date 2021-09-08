@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Author: Liam Silverwood
 mkdir "Wavs"
 
 #Loop through each .ogg

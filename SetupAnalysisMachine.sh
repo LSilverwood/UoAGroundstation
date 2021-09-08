@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+#Author: Liam Silverwood
 #Installing miniconda
 echo "Installing Miniconda3"
 if ! command -v conda &> /dev/null ; then	
