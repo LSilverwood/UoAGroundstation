@@ -14,20 +14,26 @@ fi
 #Initializing conda
 source $HOME/miniconda/bin/activate
 conda init
-conda deactivate 
 
-#Creating and then initialising the conda environment
-#Check to see if the environment exists
+##If you wish to use an environment other than base, change this to "false" and enter the name of the environment you wish to use in the line below
+USEBASE=true
+customEnv=Groundstation
+if [ "$USEBASE" = true ] ; then
+	conda activate base
+	else
+	conda deactivate 
 
-if ! conda env list | grep -q 'GroundStation'; then  
-	conda create --name GroundStation -y
+	# Creating and then initialising the conda environment
+	# Check to see if the environment exists
+
+	if ! conda env list | grep -q $customEnv; then  
+		conda create --name $customEnv -y
+	fi
+
+
+	eval "$(conda shell.bash hook)"
+	conda activate $customEnv
 fi
-
-
-eval "$(conda shell.bash hook)"
-conda activate GroundStation
-
-
 
 echo "Installing gnuradio"
 if [[ $(conda list gnuradio --json -f) == "[]" ]] ; then
