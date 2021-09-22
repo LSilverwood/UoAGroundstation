@@ -81,17 +81,9 @@ echo "Software installation complete. Testing operation of gr-satellites..."
 gr_satellites "Suomi 100" --wavfile ~/Documents/satellite-recordings/suomi_100.wav
 
 
-last4lines= "sw_count = 0
-
-            filesystem = 1
-
-            boot_count = 2670
-
-            boot_cause = 1
-
-            clock = 2068-11-18 01:41:59"
+lastline="clock = 2068-11-18 01:41:59"
 
 
-echo "If you see several lines of telemetry data, ending with $last4lines , gr-satellites was correctly installed"
+echo "If you see several lines of telemetry data, ending with $lastline , gr-satellites was correctly installed"
 
 
