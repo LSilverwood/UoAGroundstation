@@ -20,7 +20,8 @@ sudo bash ./SetupAnalysisMachine.sh
 and enter your password when prompted. When the script finishes executing, you should see the output "Test passed - gr-satellites is installed and working!". Additionally, you will see an example of a decoded packet in the terminal window. 
 
 
-By default, the script will install gr-satellites (and all its dependencies) into the 'base' conda environment
+By default, the script will install gr-satellites (and all its dependencies) into the 'base' conda environment. If you wish to use an alternative environment, you can edit line 19 of the shell script.
+
 ### Manual Method: 
 
 The manual method of installing the software is covered in great detail in [gr_satellites_guide_Project_93.pdf](https://github.com/LSilverwood/UoAGroundstation/blob/main/gr_satellites_guide_Project_93.pdf). TODO: Transcribe this.
