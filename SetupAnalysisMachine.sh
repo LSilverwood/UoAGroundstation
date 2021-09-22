@@ -84,6 +84,6 @@ gr_satellites "Suomi 100" --wavfile ~/Documents/satellite-recordings/suomi_100.w
 lastline="clock = 2068-11-18 01:41:59"
 
 
-echo "If you see several lines of telemetry data, ending with $lastline , gr-satellites was correctly installed"
+echo "If you see several lines of telemetry data, ending with "\"" $lastline "\"", gr-satellites was correctly installed"
 
 
