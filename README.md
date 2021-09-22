@@ -1,7 +1,7 @@
 # Installation and Operation of gr-satellites
 
 ## Requirements
-This guide has been tested and confirmed to work on Ubuntu 18.04 LTS and Ubuntu 20.04 LTS.You must be connected to the internet to install the necessary software. You will require superuser permissions to install the software.
+This guide has been tested and confirmed to work on Ubuntu 18.04 LTS and Ubuntu 20.04 LTS. You must be connected to the internet to install the necessary software. You will require superuser permissions to install the software.
 
 
 ## Software Installation
@@ -19,6 +19,8 @@ sudo bash ./SetupAnalysisMachine.sh
 ```
 and enter your password when prompted. When the script finishes executing, you should see the output "Test passed - gr-satellites is installed and working!". Additionally, you will see an example of a decoded packet in the terminal window. 
 
+
+By default, the script will install gr-satellites (and all its dependencies) into the 'base' conda environment
 ### Manual Method: 
 
 The manual method of installing the software is covered in great detail in [gr_satellites_guide_Project_93.pdf](https://github.com/LSilverwood/UoAGroundstation/blob/main/gr_satellites_guide_Project_93.pdf). TODO: Transcribe this.
@@ -27,17 +29,25 @@ The manual method of installing the software is covered in great detail in [gr_s
 
 ## Downloading and preparing real recordings from SatNOGS.
 
-1. Go to the (SatNOGS observations homepage)[https://network.satnogs.org/observations/], and filter to only include 'Good' (i.e the green tick) observations, and select 'With Data' and 'With Audio' in the results section. You may also choose a specific satellite at this stage. 
+1. Go to the [SatNOGS observations homepage](https://network.satnogs.org/observations/), and filter to only include 'Good' (i.e the green tick) observations, and select 'With Data' and 'With Audio' in the results section. You may also choose a specific satellite at this stage. 
 2. Click through to one of the listed observations. Click on the 'download audio' icon on the left hand side of the webpage. You can download as many observations as you want.
 3. (Optional) If you wish to test gr-satellites using either a recorded wav file directly, or to do a simulated over the air test (I.e stream the audio over UDP from one computer to another), you must convert the .ogg files to 48kHz wav files. This is best done using ffmpeg. The [SatNOGStoWAv.sh](https://github.com/LSilverwood/UoAGroundstation/blob/main/SatNOGStoWav.sh) shell command can assist with this - when run, it will look for any .ogg files in the same directory as the script. The script then uses the observation number (recorded in the name of the file) to pull the satellite's NORAD ID from the SatNOGS database. Finally, the script creates a new folder called "Wavs" and converts each .ogg to a .wav file, named with the satellite's NORAD ID. When using gr-satellites, you must specify the broadcasting satellite - either by NORAD ID or by name, so having access to the NORAD IDs proves to be very useful.
 
 ## Decoding a recorded wav file.
-To use gr-satellites to decode a wav file, the following command must be entered in the terminal
+
+gr_satellites is installed using conda, a virtual environment management tool. To use packages installed with conda, you must have activated the correct virtual environment. If you see `(base)` at the beginning of each line on your terminal, you have activated the corrrect environment. If not, just enter the below command to activate the 'base' environment
+
+```shell
+conda activate base
+```
+Once the base environment is active, you can use the following command to decode a 48kHz wav file. 
+
 ```shell
 gr_satellites SATELLITE_NAME --wavfile PATHTOWAVFILE --samp_rate 48e3
 ```
 SATELLITE_NAME can be either the NORAD ID, or the satellite's commonly used name. If the name contains a whitespace character, it must be input in double quote marks e.g "Suomi 100". 
-Note that while gr-satellites is stylised with a hyphen between the two words, the command uses an underscore.
+
+**Note that while gr-satellites is stylised with a hyphen between the two words, the command uses an underscore.**
 
 If you have correctly entered the command, you should see telemetry data being sent to the terminal output. As with all terminal commands, you can pipe this output into another terminal command using the | character, or send it to a file with a > character followed by the name of the output file.
 
