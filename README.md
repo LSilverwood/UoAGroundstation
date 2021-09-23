@@ -1,7 +1,7 @@
 # Installation and Operation of gr-satellites
 
 ## Requirements
-This guide has been tested and confirmed to work on Ubuntu 18.04 LTS and Ubuntu 20.04 LTS. You must be connected to the internet to install the necessary software. You will require superuser permissions to install the software.
+This guide has been tested and confirmed to work on Ubuntu 18.04 LTS and Ubuntu 20.04 LTS. You must be connected to the internet to install the necessary software. If you have not already installed git and ffmpeg, you will require superuser permissions to install the software.
 
 
 ## Software Installation
@@ -15,9 +15,9 @@ If the script fails to complete, you should take not of the stage at which it fa
 To use the script, download it from the [main github branch.](https://raw.githubusercontent.com/LSilverwood/UoAGroundstation/main/SetupAnalysisMachine.sh). Locate the the directory where the file is stored(Typically in the downloads folder), right click, and select "Open in terminal".
 Then, enter the following command in the terminal window:
 ```bash
-sudo bash ./SetupAnalysisMachine.sh
+bash ./SetupAnalysisMachine.sh
 ```
-and enter your password when prompted. When the script finishes executing, you should see the output "Test passed - gr-satellites is installed and working!". Additionally, you will see an example of a decoded packet in the terminal window. 
+If you have not already installed git and ffmpeg, you will need to enter your password when prompted. When the script finishes executing, you should see an example of a decoded packet in the terminal window, with the last line of the packet being "clock = 2068-11-18 01:41:59"
 
 
 By default, the script will install gr-satellites (and all its dependencies) into the 'base' conda environment. If you wish to use an alternative environment, you can edit line 19 of the shell script.
